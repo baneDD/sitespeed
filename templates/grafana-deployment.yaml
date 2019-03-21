@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    speedtest.io.service: grafana
+  name: grafana
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        speedtest.io.service: grafana
+    spec:
+      containers:
+        - env:
+            - name: GF_AUTH_ANONYMOUS_ENABLED
+              value: "true"
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              value: hdeAga76VG6ga7plZ1
+            - name: GF_SECURITY_ADMIN_USER
+              value: sitespeedio
+            - name: GF_USERS_ALLOW_ORG_CREATE
+              value: "false"
+            - name: GF_USERS_ALLOW_SIGN_UP
+              value: "false"
+          image: grafana/grafana:5.4.3
+          name: grafana
+          ports:
+            - containerPort: 3000
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: grafana
+      restartPolicy: Always
+      volumes:
+        - name: grafana
+          persistentVolumeClaim:
+            claimName: grafana
+status: {}

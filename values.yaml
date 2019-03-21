@@ -1,0 +1,11 @@
+# Default values for garie.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Namespace to use for the chart
+namespace: "monitoring"
+
+# Host to be used for Ingress
+host: sitespeed.internal.io
+
+replicaCount: 1

@@ -1,0 +1,33 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+metadata:
+  creationTimestamp: null
+  name: sitespeed-io
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      replicas: 1
+      strategy:
+        type: Recreate
+      template:
+        spec:
+          containers:
+            - args:
+                - -V
+              image: sitespeedio/sitespeed.io
+              name: sitespeed-io
+              args:
+              - https://www.iherb.com
+              - --graphite.host=graphite
+              resources: {}
+              volumeMounts:
+                - mountPath: /sitespeed.io/sitespeed-result
+                  name: sitespeed-io-claim
+          restartPolicy: OnFailure
+          volumes:
+            - name: sitespeed-io-claim
+              persistentVolumeClaim:
+                claimName: sitespeed-io
+status: {}

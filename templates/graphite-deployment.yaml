@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: graphite
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        speedtest.io.service: graphite
+    spec:
+      containers:
+        - image: sitespeedio/graphite:1.1.5-3
+          name: graphite
+          ports:
+            - containerPort: 2003
+            - containerPort: 80
+          resources: {}
+          volumeMounts:
+            - mountPath: /opt/graphite/storage/whisper
+              name: whisper
+      restartPolicy: Always
+      volumes:
+        - name: whisper
+          persistentVolumeClaim:
+            claimName: whisper
+status: {}
