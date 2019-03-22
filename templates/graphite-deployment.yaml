@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   creationTimestamp: null
+  labels:
+    speedtest.io.service: graphite
   name: graphite
 spec:
   replicas: 1
