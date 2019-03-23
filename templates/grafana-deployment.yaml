@@ -17,16 +17,16 @@ spec:
       containers:
         - env:
             - name: GF_AUTH_ANONYMOUS_ENABLED
-              value: "true"
+              value: "{{ .Values.grafana.authAnonymousEnabled }}"
             - name: GF_SECURITY_ADMIN_PASSWORD
-              value: hdeAga76VG6ga7plZ1
+              value: {{ .Values.grafana.securityAdminPassword }}
             - name: GF_SECURITY_ADMIN_USER
-              value: sitespeedio
+              value: {{ .Values.grafana.securityAdminUser }}
             - name: GF_USERS_ALLOW_ORG_CREATE
-              value: "false"
+              value: "{{ .Values.grafana.usersAllowOrgCreate }}"
             - name: GF_USERS_ALLOW_SIGN_UP
-              value: "false"
-          image: grafana/grafana:5.4.3
+              value: "{{ .Values.grafana.usersAllowSignUp }}"
+          image: grafana/grafana:{{ .Values.grafana.version }}
           name: grafana
           ports:
             - containerPort: 3000
