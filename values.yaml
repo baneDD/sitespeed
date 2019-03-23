@@ -1,7 +1,3 @@
-# Default values for garie.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 # Namespace to use for the chart
 namespace: "sitespeed"
 
@@ -16,6 +12,10 @@ grafana:
   securityAdminPassword: "hdeAga76VG6ga7plZ1"
   usersAllowOrgCreate: "false"
   usersAllowSignUp: "false"
+
+# Grafana Bootstrap Settings
+grafanaBootstrap:
+  version: "8.8.0"
 
 # Graphite Settings
 graphite:

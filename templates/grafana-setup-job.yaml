@@ -9,14 +9,14 @@ spec:
       initContainers:
         - name: init-wait
           image: alpine
-          command: ["sh", "-c", "for i in $(seq 1 300); do nc -zvw1 graphite 8080 && exit 0 || sleep 3; done; exit 1"]
+          command: ["sh", "-c", "for i in $(seq 1 300); do nc -zvw1 graphite 80 && exit 0 || sleep 3; done; exit 1"]
       containers:
         - env:
             - name: GF_PASSWORD
-              value: hdeAga76VG6ga7plZ1
+              value: {{ .Values.grafana.securityAdminPassword }}
             - name: GF_USER
-              value: sitespeedio
-          image: sitespeedio/grafana-bootstrap:8.8.0
+              value: {{ .Values.grafana.securityAdminUser }}
+          image: sitespeedio/grafana-bootstrap:{{ .Values.grafanaBootstrap.version }}
           name: grafana-setup
           resources: {}
       restartPolicy: OnFailure
