@@ -1,8 +1,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  creationTimestamp: null
   name: grafana-setup
+  namespace: {{ .Values.namespace }}
 spec:
   template:
     spec:

@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 # Namespace to use for the chart
-namespace: "monitoring"
+namespace: "sitespeed"
 
 # Host to be used for Ingress
 host: sitespeed.internal.io

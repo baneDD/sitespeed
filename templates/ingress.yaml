@@ -5,6 +5,7 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
     ingress.kubernetes.io/ssl-redirect: "false"
   name: sitespeed
+  namespace: {{ .Values.namespace }}
 spec:
   rules:
     - host: sitespeed.internal.io

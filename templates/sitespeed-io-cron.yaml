@@ -2,8 +2,8 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
 metadata:
-  creationTimestamp: null
   name: sitespeed-io
+  namespace: {{ .Values.namespace }}
 spec:
   schedule: "*/5 * * * *"
   jobTemplate:

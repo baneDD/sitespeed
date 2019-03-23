@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   name: grafana
+  namespace: {{ .Values.namespace }}
 spec:
   ports:
     - name: "3000"
