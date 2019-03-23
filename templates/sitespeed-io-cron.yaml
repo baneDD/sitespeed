@@ -19,15 +19,24 @@ spec:
               image: sitespeedio/sitespeed.io
               name: sitespeed-io
               args:
-              - https://www.iherb.com
+              - /sitespeed.io/urls.txt
               - --graphite.host=graphite
               resources: {}
               volumeMounts:
                 - mountPath: /sitespeed.io/sitespeed-result
                   name: sitespeed-io-claim
+                - mountPath: /sitespeed.io/urls.txt
+                  subPath: urls.txt
+                  name: sitespeed-io-configmap                  
           restartPolicy: OnFailure
           volumes:
             - name: sitespeed-io-claim
               persistentVolumeClaim:
                 claimName: sitespeed-io
+            - name: sitespeed-io-configmap
+              configMap:
+                name: sitespeed-io-configmap
+                items:
+                  - key: urls.txt
+                    path: urls.txt                
 status: {}

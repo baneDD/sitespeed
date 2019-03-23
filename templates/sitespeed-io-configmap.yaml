@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sitespeed-io-configmap
+  namespace: {{ .Values.namespace }}
+data:
+  urls.txt: |-
+    https://en.wikipedia.org
+    https://www.nytimes.com/
+    https://www.cnn.com/
+    https://www.bbc.com/
+    http://www.espn.com/
+    https://www.amazon.com/
