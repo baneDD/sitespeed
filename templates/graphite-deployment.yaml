@@ -15,7 +15,7 @@ spec:
         speedtest.io.service: graphite
     spec:
       containers:
-        - image: sitespeedio/graphite:1.1.5-3
+        - image: sitespeedio/graphite:{{ .Values.graphite.version }}
           name: graphite
           ports:
             - containerPort: 2003
