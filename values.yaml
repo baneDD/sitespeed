@@ -6,7 +6,7 @@
 namespace: "sitespeed"
 
 # Host to be used for Ingress
-host: sitespeed.internal.io
+host: "sitespeed.internal.io"
 
 # Grafana Settings
 grafana:
