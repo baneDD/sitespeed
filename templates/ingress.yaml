@@ -14,3 +14,10 @@ spec:
               serviceName: grafana
               servicePort: 3000
             path: /
+    - host: graphite.internal.io
+      http:
+        paths:
+          - backend:
+              serviceName: graphite
+              servicePort: 8080
+            path: /

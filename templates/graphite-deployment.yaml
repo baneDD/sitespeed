@@ -23,6 +23,9 @@ spec:
             - containerPort: 80
           resources: {}
           volumeMounts:
+            - mountPath: /opt/graphite/conf/carbon.conf
+              subPath: carbon.conf
+              name: carbon-configmap
             - mountPath: /opt/graphite/storage/whisper
               name: whisper
       restartPolicy: Always
@@ -30,4 +33,10 @@ spec:
         - name: whisper
           persistentVolumeClaim:
             claimName: whisper
+        - name: carbon-configmap
+          configMap:
+            name: carbon-configmap
+            items:
+              - key: carbon.conf
+                path: carbon.conf
 status: {}
